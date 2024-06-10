@@ -10,10 +10,9 @@ const { Title } = Typography;
 
 const HomePage = () => {
   const { data, isFetching } =  useGetCryptosQuery();
-  const response = data?.data;
+  const response = data?.data.stats;
 
   if (isFetching) return "Loading ..."
-
   return (
     <div className='routes'>
       <Title level={2} className='heading'>Global Crypto Stats</Title>
@@ -24,16 +23,16 @@ const HomePage = () => {
         <Col span={12}><Statistic title="Total 24h Volume" value={millify(response.total24hVolume)}/></Col>
         <Col span={12}><Statistic title="Total Markets" value={millify(response.totalMarkets)}/></Col>
       </Row>
-      <Cryptocurrencies simplified />
       <div className='home-heading-container'>
         <Title level={2} className='home-title'>Top 10 Cryptos In The World</Title>
         <Title level={3} className='show-more'><Link to="/cryptocurrencies">Show more</Link></Title>
       </div>
-      <News simplified />
+      <Cryptocurrencies simplified />
       <div className='home-heading-container'>
         <Title level={2} className='home-title'>Latest Crypto News</Title>
         <Title level={3} className='show-more'><Link to="/news">Show more</Link></Title>
       </div>
+      <News simplified />
     </div>
   )
 }
