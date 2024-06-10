@@ -31,7 +31,9 @@ a:hover{
 }
 
 .main{
+  display: flex;
   flex: auto;
+  flex-direction: column;
   width: 100%;
   
 }
